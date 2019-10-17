@@ -1,0 +1,27 @@
+name: simple
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install cmake project
+      id: build
+      uses: ./
+      with:
+        url: https://github.com/Warchant/blake2s/archive/1.0.0.tar.gz
+        cmake_args: '-DCMAKE_BUILD_TYPE=Release'
+    - name: Print install dir
+      run: |
+        echo 'The install dir is ${{ steps.build.outputs.install_dir }}'
+        ls -la ${{ steps.build.outputs.install_dir }}

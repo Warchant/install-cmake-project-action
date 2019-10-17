@@ -1,0 +1,19 @@
+name: 'install-cmake-project-action'
+description: 'Install given cmake project on your host'
+author: 'Warchant'
+inputs:
+  url:
+    description: 'URL of tar.gz archive with source code'
+    required: true
+  cmake_args:
+    description: 'CLI arguments for `cmake`'
+    required: true
+outputs:
+  install_dir:
+    description: 'CMake project will be installed in this directory'
+branding:
+  icon: 'check'
+  color: 'black'
+runs:
+  using: 'node12'
+  main: 'index.js'
